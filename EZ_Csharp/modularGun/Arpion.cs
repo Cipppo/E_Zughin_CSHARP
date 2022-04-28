@@ -37,6 +37,8 @@ public class Arpion : Bullet
         }
     }
 
+    public Status GetStatus() => status;
+
     public override string ToString()
     {
         return "Status: " + this.status + " Direction: " + this.dir;
