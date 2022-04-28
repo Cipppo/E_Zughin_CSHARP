@@ -23,25 +23,22 @@ public class Arpion : Bullet
         this.Steps = 0;
     }
 
-    public void Raise()
-    {
-        throw new NotImplementedException();
-    }
+    public void Raise() => this.Steps++;
 
-    public void Lock()
-    {
-        throw new NotImplementedException();
-    }
+    public void Lock() => this.status = Status.Rising;
 
-    public void Unlock()
-    {
-        throw new NotImplementedException();
-    }
+    public void Unlock() => this.status = Status.Idle;
 
     public void hit()
     {
-        throw new NotImplementedException();
+        if (this.status == Status.Rising)
+        {
+            this.status = Status.Hit;
+        }
     }
 
-
+    public override string ToString()
+    {
+        return "Status: " + this.status + " Direction: " + this.dir;
+    }
 }
