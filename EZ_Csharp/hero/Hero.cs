@@ -13,7 +13,7 @@ public class Hero
     public Hero()
     {
         this.Dir = Directions.LEFT;
-        this.Status = HeroStatus.NEUTRAL;
+        this.Status = HeroStatus.Neutral;
         this.Lives = 3;
         this.IsAwake = true;
     }
