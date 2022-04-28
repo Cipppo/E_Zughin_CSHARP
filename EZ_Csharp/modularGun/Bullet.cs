@@ -14,4 +14,6 @@ public interface Bullet
 
     void hit();
 
+    Status GetStatus();
+
 }
