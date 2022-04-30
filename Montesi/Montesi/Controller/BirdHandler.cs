@@ -40,6 +40,7 @@ namespace Montesi.Controller
                 Actor = Optional<BirdActor>.Empty();
                 Thread.Sleep(GetTimeToSleep() * 1000);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private void CreateBird()
