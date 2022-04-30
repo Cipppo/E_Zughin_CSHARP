@@ -1,5 +1,4 @@
-﻿using System;
-using Montesi.Controller;
+﻿using Montesi.Controller;
 
 namespace Montesi
 {
@@ -7,7 +6,7 @@ namespace Montesi
     {
         private static readonly BirdHandler Bird = new BirdHandler();
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             Bird.Start();
         }
