@@ -20,6 +20,7 @@ namespace Montesi.Controller
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
         private BirdMovementUtils _movUtils;
+        private int _timeToSleep;
 
         protected override void RunThread()
         {
@@ -38,7 +39,8 @@ namespace Montesi.Controller
                         break;
                 }
                 Actor = Optional<BirdActor>.Empty();
-                Thread.Sleep(GetTimeToSleep() * 1000);
+                Console.WriteLine("Reached Limit of the stage, waiting " + _timeToSleep + " seconds...");
+                Thread.Sleep(_timeToSleep * 1000);
             }
             // ReSharper disable once FunctionNeverReturns
         }
@@ -50,6 +52,7 @@ namespace Montesi.Controller
             Actor = Optional<BirdActor>.Of(new BirdActor(new EntityPos2D(_startPosX, StartY)));
             _mover = new BirdMover(Actor.Get(), _bc);
             _movUtils = new BirdMovementUtils(Actor.Get(), _mover);
+            _timeToSleep = GetTimeToSleep();
         }
 
         private int GetTimeToSleep() => _random.Next(10) + 5;
