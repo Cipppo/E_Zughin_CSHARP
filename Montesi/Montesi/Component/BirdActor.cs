@@ -4,10 +4,10 @@ namespace Montesi.Component
 {
     public class BirdActor
     {
-        private const int Width = 40;
-        private const int Height = 50;
+        private const int Width = 5;
+        private const int Height = 3;
         
-        private BirdShape S { get; set; }
+        public BirdShape S { get; private set; }
         private BirdDirections Dir { get; }
 
         public BirdActor(EntityPos2D startPos, BirdDirections dir)
