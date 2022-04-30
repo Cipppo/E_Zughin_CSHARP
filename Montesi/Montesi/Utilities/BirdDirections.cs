@@ -1,6 +1,6 @@
 namespace Montesi.Utilities
 {
-    public enum Directions
+    public enum BirdDirections
     {
         LEFT, RIGHT, DOWN, UP
     }
