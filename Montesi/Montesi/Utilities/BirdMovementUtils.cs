@@ -15,7 +15,7 @@ namespace Montesi.Utilities
 
         private readonly BirdActor _bird;
         private readonly BirdMover _mover;
-        private bool _moveUp = false;
+        private bool _moveUp;
         private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
@@ -31,7 +31,7 @@ namespace Montesi.Utilities
             _moveUp = false;
             while (_bird.S.Pos.X + Width <= _bc.X.Y - Speed)
             {
-                DoMovement(BirdDirections.RIGHT);
+                DoMovement(BirdDirections.Right);
                 MoveVertically();
                 Console.WriteLine(_bird.S.Pos.ToString());
                 Thread.Sleep(500);
@@ -43,7 +43,7 @@ namespace Montesi.Utilities
             _moveUp = false;
             while (_bird.S.Pos.X >= _bc.X.X + Speed)
             {
-                DoMovement(BirdDirections.LEFT);
+                DoMovement(BirdDirections.Left);
                 MoveVertically();
                 Console.WriteLine(_bird.S.Pos.ToString());
                 Thread.Sleep(500);
@@ -54,12 +54,12 @@ namespace Montesi.Utilities
         {
             if (_bird.S.Pos.Y + Height <= _bc.Y.Y && !_moveUp)
             {
-                DoMovement(BirdDirections.DOWN);
+                DoMovement(BirdDirections.Down);
             }
             else
             {
                 _moveUp = true;
-                DoMovement(BirdDirections.UP);
+                DoMovement(BirdDirections.Up);
             }
         }
 
@@ -67,17 +67,17 @@ namespace Montesi.Utilities
         {
             switch (dir)
             {
-                case BirdDirections.RIGHT:
-                    BirdActionFactory.GetRightAction(_mover);
+                case BirdDirections.Right:
+                    _actionFactory.GetRightAction(_mover);
                     break;
-                case BirdDirections.LEFT:
-                    BirdActionFactory.GetLeftAction(_mover);
+                case BirdDirections.Left:
+                    _actionFactory.GetLeftAction(_mover);
                     break;
-                case BirdDirections.DOWN:
-                    BirdActionFactory.GetDownAction(_mover);
+                case BirdDirections.Down:
+                    _actionFactory.GetDownAction(_mover);
                     break;
-                case BirdDirections.UP:
-                    BirdActionFactory.GetUpAction(_mover);
+                case BirdDirections.Up:
+                    _actionFactory.GetUpAction(_mover);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
