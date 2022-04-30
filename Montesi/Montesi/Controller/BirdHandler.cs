@@ -47,7 +47,7 @@ namespace Montesi.Controller
         {
             _dir = RandomDirectionChooser();
             _startPosX = _dir == BirdDirections.Right ? 0 : SizeX - Width;
-            Actor = Optional<BirdActor>.Of(new BirdActor(new EntityPos2D(_startPosX, StartY), _dir));
+            Actor = Optional<BirdActor>.Of(new BirdActor(new EntityPos2D(_startPosX, StartY)));
             _mover = new BirdMover(Actor.Get(), _bc);
             _movUtils = new BirdMovementUtils(Actor.Get(), _mover);
         }

@@ -4,13 +4,11 @@ namespace Montesi.Utilities
     {
         public EntityPos2D Pos { get; }
         public BirdPair<int, int> Dimension { get; }
-        private BirdDirections Dir { get; }
-        
-        public BirdShape(EntityPos2D pos, BirdPair<int, int> dimension, BirdDirections dir)
+
+        public BirdShape(EntityPos2D pos, BirdPair<int, int> dimension)
         {
             Pos = pos;
             Dimension = dimension;
-            Dir = dir;
         }
 
     }

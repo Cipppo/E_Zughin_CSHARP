@@ -8,17 +8,15 @@ namespace Montesi.Component
         private const int Height = 3;
         
         public BirdShape S { get; private set; }
-        private BirdDirections Dir { get; }
 
-        public BirdActor(EntityPos2D startPos, BirdDirections dir)
+        public BirdActor(EntityPos2D startPos)
         {
-            Dir = dir;
-            S = new BirdShape(startPos, new BirdPair<int, int>(Width, Height), Dir);
+            S = new BirdShape(startPos, new BirdPair<int, int>(Width, Height));
         }
 
         public void ChangeLocation(EntityPos2D pos)
         {
-            S = new BirdShape(pos, new BirdPair<int, int>(Width, Height), Dir);
+            S = new BirdShape(pos, new BirdPair<int, int>(Width, Height));
         }
     }
 }
