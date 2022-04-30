@@ -14,7 +14,7 @@ namespace Montesi.Controller
 
         private readonly Random _random = new Random();
         private BirdMover _mover;
-        public Optional<BirdActor> Actor { get; set; }
+        private Optional<BirdActor> Actor { get; set; }
         private int _startPosX;
         private BirdDirections _dir;
         private readonly BirdBoundChecker _bc =
@@ -45,7 +45,7 @@ namespace Montesi.Controller
         private void CreateBird()
         {
             _dir = RandomDirectionChooser();
-            _startPosX = _dir == BirdDirections.RIGHT ? 0 : SizeX - Width;
+            _startPosX = _dir == BirdDirections.Right ? 0 : SizeX - Width;
             Actor = Optional<BirdActor>.Of(new BirdActor(new EntityPos2D(_startPosX, StartY), _dir));
             _mover = new BirdMover(Actor.Get(), _bc);
             _movUtils = new BirdMovementUtils(Actor.Get(), _mover);
@@ -54,7 +54,7 @@ namespace Montesi.Controller
         private int GetTimeToSleep() => _random.Next(10) + 5;
 
         private BirdDirections RandomDirectionChooser() =>
-            _random.Next(2) == 0 ? BirdDirections.RIGHT : BirdDirections.LEFT;
+            _random.Next(2) == 0 ? BirdDirections.Right : BirdDirections.Left;
 
         public Optional<BirdShape> GetShape() => 
             Actor.IsPresent ? Optional<BirdShape>.Of(Actor.Get().S) : Optional<BirdShape>.Empty();
