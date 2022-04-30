@@ -1,4 +1,6 @@
-namespace Montesi.Utilities
+using Montesi.Utilities;
+
+namespace Montesi.Component
 {
     public class BirdShape : IEntityShape
     {
