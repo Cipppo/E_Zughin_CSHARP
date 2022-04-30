@@ -5,6 +5,10 @@ using Montesi.Utilities;
 
 namespace Montesi.Controller
 {
+    /// <summary>
+    /// The handler of the bird.
+    /// This class manage the bird spawning and movement.
+    /// </summary>
     public class BirdHandler : BaseThread
     {
         private const int SizeX = 40;
@@ -22,6 +26,9 @@ namespace Montesi.Controller
         private BirdMovementUtils _movUtils;
         private int _timeToSleep;
 
+        /// <summary>
+        /// This thread make the bird move.
+        /// </summary>
         protected override void RunThread()
         {
             while (true)
@@ -45,6 +52,9 @@ namespace Montesi.Controller
             // ReSharper disable once FunctionNeverReturns
         }
 
+        /// <summary>
+        /// This method create the bird.
+        /// </summary>
         private void CreateBird()
         {
             _dir = RandomDirectionChooser();
@@ -55,11 +65,17 @@ namespace Montesi.Controller
             _timeToSleep = GetTimeToSleep();
         }
 
+        /// <summary>
+        /// Timeout between the spawn of a bird after the dead of the previous one.
+        /// </summary>
+        /// <returns>The time to wait.</returns>
         private int GetTimeToSleep() => _random.Next(10) + 5;
-
+        
+        /// <returns>A random direction for the bird.</returns>
         private BirdDirections RandomDirectionChooser() =>
             _random.Next(2) == 0 ? BirdDirections.Right : BirdDirections.Left;
-
+        
+        /// <returns>The shape if the bird exists, Optional.empty() otherwise.</returns>
         public Optional<BirdShape> GetShape() => 
             Actor.IsPresent ? Optional<BirdShape>.Of(Actor.Get().S) : Optional<BirdShape>.Empty();
     }
