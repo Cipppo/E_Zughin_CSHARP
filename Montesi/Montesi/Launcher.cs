@@ -3,11 +3,11 @@ using Montesi.Controller;
 
 namespace Montesi
 {
-    class Launcher
+    internal static class Launcher
     {
         private static readonly BirdHandler Bird = new BirdHandler();
-        
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             Bird.Start();
         }
