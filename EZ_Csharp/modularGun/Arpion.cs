@@ -29,7 +29,7 @@ public class Arpion : Bullet
 
     public void Unlock() => this.status = Status.Idle;
 
-    public void hit()
+    public void Hit()
     {
         if (this.status == Status.Rising)
         {

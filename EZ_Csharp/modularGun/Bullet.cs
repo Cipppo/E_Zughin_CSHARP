@@ -12,7 +12,7 @@ public interface Bullet
 
     void Unlock();
 
-    void hit();
+    void Hit();
 
     Status GetStatus();
 
