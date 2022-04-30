@@ -14,6 +14,12 @@ public interface Bullet
 
     void Hit();
 
-    Status GetStatus();
+    Directions Dir { get; set; }
+    
+    Status Status { get; set; }
+    
+    int WaitTime { get; set; }
+    
+    int Steps { get; set; }
 
 }
