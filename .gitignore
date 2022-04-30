@@ -1,7 +1,6 @@
+.vs
 bin/
 obj/
 .idea/
-
-*.sln
-*.csproj
-.DS_Store
+packages/
+*.user
