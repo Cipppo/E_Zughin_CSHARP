@@ -1,7 +1,6 @@
-
+.vs
 bin/
 obj/
 .idea/
-
-*.csproj
+packages/
 *.user
