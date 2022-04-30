@@ -6,7 +6,7 @@ public interface IGunBag
 {
     void ResetGunType(GunTypes caller);
 
-    Bullet GetShootingGun();
+    Optional<Bullet> GetShootingGun();
 
     void SetsDirections(Directions dir);
 
