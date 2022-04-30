@@ -12,7 +12,7 @@ public class GunSet : IGunBag
         this.Arpion = new Arpion();
         this.CurrentGun = GunTypes.Arpion;
     }
-
+    
     private Optional<Bullet> GetSingleArpion()
     {
         return Arpion.Status == Status.Idle ? Optional<Bullet>.of(this.Arpion) : Optional<Bullet>.Empty();
