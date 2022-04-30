@@ -1,5 +1,3 @@
-using System;
-
 namespace Montesi.Utilities
 {
     public class BirdBoundChecker
