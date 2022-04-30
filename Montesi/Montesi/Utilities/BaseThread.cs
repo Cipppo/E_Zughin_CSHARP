@@ -8,7 +8,7 @@ namespace Montesi.Utilities
 
         protected BaseThread()
         {
-            _thread = new Thread(new ThreadStart(this.RunThread));
+            _thread = new Thread(RunThread);
         }
 
         // Thread methods / properties
