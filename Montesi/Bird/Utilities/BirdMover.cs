@@ -25,8 +25,7 @@ namespace Montesi.Utilities
         /// Moves the bird to the desired position.
         /// </summary>
         /// <param name="pos">Position to move the bird.</param>
-        /// <param name="dir">Direction the bird is flying.</param>
-        public void Move(EntityPos2D pos, BirdDirections dir)
+        public void Move(EntityPos2D pos)
         {
             if (_bc.IsInside(pos, _actor.S.Dimension.X, _actor.S.Dimension.Y))
             {

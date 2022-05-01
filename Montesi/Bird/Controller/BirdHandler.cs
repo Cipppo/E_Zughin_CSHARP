@@ -12,7 +12,7 @@ namespace Montesi.Controller
     public class BirdHandler : BaseThread
     {
         private const int SizeX = 40;
-        private const int SizeY = 50;
+        private const int SizeY = 15;
         private const int Width = 5;
         private const int StartY = 0;
 

@@ -80,7 +80,7 @@ namespace Montesi.Utilities
         /// </summary>
         private void MoveVertically()
         {
-            if (_bird.S.Pos.Y + Height <= _bc.Y.Y && !_moveUp)
+            if (_bird.S.Pos.Y + Height < _bc.Y.Y && !_moveUp)
             {
                 DoMovement(BirdDirections.Down);
             }

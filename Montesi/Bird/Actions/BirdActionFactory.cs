@@ -15,7 +15,7 @@ namespace Montesi.Actions
         public class RightAction
         {
             public RightAction(BirdMover m) =>
-                m.Move(new EntityPos2D(m.GetCurrentPos().X + Speed, m.GetCurrentPos().Y), BirdDirections.Right);
+                m.Move(new EntityPos2D(m.GetCurrentPos().X + Speed, m.GetCurrentPos().Y));
         }
         
         /// <summary>
@@ -24,7 +24,7 @@ namespace Montesi.Actions
         public class LeftAction
         {
             public LeftAction(BirdMover m) =>
-                m.Move(new EntityPos2D(m.GetCurrentPos().X - Speed, m.GetCurrentPos().Y), BirdDirections.Right);
+                m.Move(new EntityPos2D(m.GetCurrentPos().X - Speed, m.GetCurrentPos().Y));
         }
         
         /// <summary>
@@ -33,7 +33,7 @@ namespace Montesi.Actions
         public class DownAction
         {
             public DownAction(BirdMover m) =>
-                m.Move(new EntityPos2D(m.GetCurrentPos().X, m.GetCurrentPos().Y + Speed), BirdDirections.Right);
+                m.Move(new EntityPos2D(m.GetCurrentPos().X, m.GetCurrentPos().Y + Speed));
         }
         
         /// <summary>
@@ -42,7 +42,7 @@ namespace Montesi.Actions
         public class UpAction
         {
             public UpAction(BirdMover m) =>
-                m.Move(new EntityPos2D(m.GetCurrentPos().X, m.GetCurrentPos().Y - Speed), BirdDirections.Right);
+                m.Move(new EntityPos2D(m.GetCurrentPos().X, m.GetCurrentPos().Y - Speed));
         }
 
         public RightAction GetRightAction(BirdMover m) => new RightAction(m);
