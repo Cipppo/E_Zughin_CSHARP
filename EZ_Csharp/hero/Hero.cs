@@ -2,21 +2,15 @@ using EZ_Csharp.utils;
 
 namespace EZ_Csharp.hero;
 
-public class Hero
+public class Hero : IPausable
 {
     private EntityPos2D Pos { get; set; } = new(0, 0);
-    private Directions Dir { get; set; }
-    private HeroStatus Status { get; set; }
-    private int Lives { get; set; }
-    private bool IsAwake { get; set; }
-
-    public Hero()
-    {
-        this.Dir = Directions.LEFT;
-        this.Status = HeroStatus.Neutral;
-        this.Lives = 3;
-        this.IsAwake = true;
-    }
+    public Directions Dir { get; private set; } = Directions.LEFT;
+    public HeroStatus Status { get; private set; } = HeroStatus.Neutral;
+    public int Lives { get; private set; } = 3;
+    public bool IsAwake { get; set; } = true;
+    
+    public Hero() {}
 
     public void Move(Directions newDir)
     {
@@ -33,6 +27,7 @@ public class Hero
     {
         if (!this.IsAwake) return;
         this.Lives--;
+        this.Status = HeroStatus.Hit;
         Console.WriteLine("Lives: " + this.Lives);
     }
 
@@ -41,5 +36,9 @@ public class Hero
         this.Pos = new EntityPos2D(0, 0);
         this.Lives = 3;
     }
-    
+
+    public void PauseAll() => this.IsAwake = false;
+
+    public void ResumeAll() => this.IsAwake = true;
+
 }   
