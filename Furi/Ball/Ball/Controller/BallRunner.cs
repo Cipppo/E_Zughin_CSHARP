@@ -23,7 +23,7 @@ public class BallRunner
     {
         _balls.ForEach(t => t.Start());
         _thread = new Thread(CheckConstraints);
-
+        _thread.Start();
     }
     
     private void CheckConstraints()
