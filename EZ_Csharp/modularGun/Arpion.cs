@@ -5,18 +5,12 @@ namespace EZ_Csharp.modularGun;
 
 public class Arpion : Bullet
 {
-    public Status Status { get; set; }
-    public Directions Dir { get; set; }
-    public int WaitTime { get; set; }
-    public int Steps { get; set; }
+    public Status Status { get; set; } = Status.Idle;
+    public Directions Dir { get; set; } = Directions.LEFT;
+    public int WaitTime { get; set; } = 0;
+    public int Steps { get; set; } = 0;
 
-    public Arpion()
-    {
-        this.WaitTime = 0;
-        this.Status = Status.Idle;
-        this.Dir = Directions.LEFT;
-        this.Steps = 0;
-    }
+    public Arpion() {}
 
     public void Restore()
     {
