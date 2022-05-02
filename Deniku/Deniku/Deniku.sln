@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.22
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progetto", "Progetto\Progetto.csproj", "{A1179D09-2670-447C-8E88-2F9A313BBB21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1179D09-2670-447C-8E88-2F9A313BBB21}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{A1179D09-2670-447C-8E88-2F9A313BBB21}.Debug|anycpu.Build.0 = Debug|anycpu
+		{A1179D09-2670-447C-8E88-2F9A313BBB21}.Release|anycpu.ActiveCfg = Release|anycpu
+		{A1179D09-2670-447C-8E88-2F9A313BBB21}.Release|anycpu.Build.0 = Release|anycpu
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

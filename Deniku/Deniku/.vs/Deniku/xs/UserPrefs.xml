@@ -1,9 +1,18 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{A1179D09-2670-447C-8E88-2F9A313BBB21}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/Program.cs">
+    <Files>
+      <File FileName="Progetto/Program.cs" Line="20" Column="16" />
+      <File FileName="Progetto/Player.cs" Line="36" Column="1" />
+      <File FileName="Progetto/Players.cs" Line="60" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Deniku" selected="True" />
+          <Node name="Deniku" expanded="True">
+            <Node name="Progetto" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -13,6 +22,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.Progetto PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
