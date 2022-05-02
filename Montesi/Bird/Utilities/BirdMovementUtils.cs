@@ -30,6 +30,7 @@ namespace Montesi.Utilities
         private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
+        private bool BirdDead { get; set; }
 
         /// <summary>
         /// Constructor that define the bird to move, the panel on which to move the bird
@@ -49,7 +50,7 @@ namespace Montesi.Utilities
         public void MoveRight()
         {
             _moveUp = false;
-            while (_bird.S.Pos.X + Width <= _bc.X.Y - Speed)
+            while (_bird.S.Pos.X + Width <= _bc.X.Y - Speed && !BirdDead)
             {
                 DoMovement(BirdDirections.Right);
                 MoveVertically();
@@ -64,7 +65,7 @@ namespace Montesi.Utilities
         public void MoveLeft()
         {
             _moveUp = false;
-            while (_bird.S.Pos.X >= _bc.X.X + Speed)
+            while (_bird.S.Pos.X >= _bc.X.X + Speed && !BirdDead)
             {
                 DoMovement(BirdDirections.Left);
                 MoveVertically();
@@ -117,5 +118,7 @@ namespace Montesi.Utilities
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
             }
         }
+
+        public void SetDead() => BirdDead = true;
     }
 }

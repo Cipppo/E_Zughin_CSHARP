@@ -18,36 +18,42 @@ namespace Montesi.Controller
 
         private readonly Random _random = new Random();
         private BirdMover _mover;
-        private Optional<BirdActor> Actor { get; set; }
+        public Optional<BirdActor> Actor { get; private set; }
         private int _startPosX;
         private BirdDirections _dir;
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
         private BirdMovementUtils _movUtils;
         private int _timeToSleep;
+        private bool BirdDead { get; set; }
+        private bool Terminated { get; set; }
 
         /// <summary>
         /// This thread make the bird move.
         /// </summary>
         protected override void RunThread()
         {
-            while (true)
+            while (!Terminated)
             {
-                CreateBird();
-                Thread.Sleep(20);
-                Console.WriteLine("Chosen Direction: " + _dir.ToString());
-                switch (_startPosX)
+                while (!BirdDead)
                 {
-                    case 0:
-                        _movUtils.MoveRight();
-                        break;
-                    case SizeX - Width:
-                        _movUtils.MoveLeft();
-                        break;
-                }
-                Actor = Optional<BirdActor>.Empty();
-                Console.WriteLine("Reached Limit of the stage, waiting " + _timeToSleep + " seconds...");
-                Thread.Sleep(_timeToSleep * 1000);
+                    CreateBird();
+                    Thread.Sleep(20);
+                    Console.WriteLine("Chosen Direction: " + _dir);
+                    switch (_startPosX)
+                    {
+                        case 0:
+                            _movUtils.MoveRight();
+                            break;
+                        case SizeX - Width:
+                            _movUtils.MoveLeft();
+                            break;
+                    }
+                    Actor = Optional<BirdActor>.Empty();
+                    Console.WriteLine("Reached Limit of the stage (or bird was hit), waiting " + _timeToSleep + " seconds...");
+                    Thread.Sleep(_timeToSleep * 1000);
+                    BirdDead = false;
+                }   
             }
             // ReSharper disable once FunctionNeverReturns
         }
@@ -70,6 +76,12 @@ namespace Montesi.Controller
         /// </summary>
         /// <returns>The time to wait.</returns>
         private int GetTimeToSleep() => _random.Next(10) + 5;
+
+        public void SetBirdDead()
+        {
+            BirdDead = true;
+            _movUtils.SetDead();
+        }
         
         /// <returns>A random direction for the bird.</returns>
         private BirdDirections RandomDirectionChooser() =>
@@ -78,5 +90,11 @@ namespace Montesi.Controller
         /// <returns>The shape if the bird exists, Optional.empty() otherwise.</returns>
         public Optional<BirdShape> GetShape() => 
             Actor.IsPresent ? Optional<BirdShape>.Of(Actor.Get().S) : Optional<BirdShape>.Empty();
+
+        public void Terminate()
+        {
+            SetBirdDead();
+            Terminated = true;
+        }
     }
 }
