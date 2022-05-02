@@ -7,7 +7,7 @@ public class HeroComponent
     private const int Width = 40;
     private const int Height = 50;
 
-    private Shape S { get; set; }
+    public Shape S { get; private set; }
 
     public HeroComponent(EntityPos2D startPos)
     {
