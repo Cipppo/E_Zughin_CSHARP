@@ -9,18 +9,18 @@ public class FakeVisual
     public int Width { get; }
     public int Heigth { get; }
 
-    public ArpionComponent ArpionComponent { get; set; }
+    public ArpionComponent ArpionComponent { get; }
     
-    public HeroComponent HeroComponent { get; set; }
+    public HeroComponent HeroComponent { get; }
 
-    public FakeVisual(int width, int heigth, EntityPos2D startpos)
+    public FakeVisual(int width, int heigth, EntityPos2D startPos)
     {
         this.Width = width;
         this.Heigth = heigth;
-        this.HeroComponent = new HeroComponent(startpos);
-        this.ArpionComponent = new ArpionComponent(startpos);
-        this.HeroComponent.ChangeLocation(startpos);
-        this.HeroComponent.ChangeLocation(startpos);
+        this.HeroComponent = new HeroComponent(startPos);
+        this.ArpionComponent = new ArpionComponent(startPos);
+        this.HeroComponent.ChangeLocation(startPos);
+        this.HeroComponent.ChangeLocation(startPos);
     }
 
     public void Move(EntityPos2D pos)
