@@ -1,5 +1,7 @@
+using System.Threading;
 using Montesi.Actions;
 using Montesi.Component;
+using Montesi.Controller;
 using Montesi.Utilities;
 using NUnit.Framework;
 
@@ -19,6 +21,7 @@ namespace Tests
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
         private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
+        private BirdHandler _birdHandler;
 
         [SetUp]
         public void SetUp()
@@ -66,6 +69,33 @@ namespace Tests
             Actor = Optional<BirdActor>.Empty();
 
             Assert.False(Actor.IsPresent);
+        }
+
+        [Test]
+        public void Check_Bird_Dead()
+        {
+            _birdHandler = new BirdHandler();
+            _birdHandler.Start();
+            Thread.Sleep(5000);
+            _birdHandler.SetBirdDead();
+            Thread.Sleep(1000);
+            
+            Assert.False(_birdHandler.Actor.IsPresent);
+            
+            _birdHandler.Terminate();
+        }
+
+        [Test]
+        public void Check_Bird_Respawn()
+        {
+            _birdHandler = new BirdHandler();
+            _birdHandler.Start();
+            Thread.Sleep(1000);
+            _birdHandler.SetBirdDead();
+            Thread.Sleep(15000);
+
+            Assert.True(_birdHandler.Actor.IsPresent);
+            _birdHandler.Terminate();
         }
     }
 }
