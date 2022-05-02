@@ -1,0 +1,7 @@
+*.csproj
+obj/
+bin/
+.idea/
+*.sln
+.DS_Store
+*.user
