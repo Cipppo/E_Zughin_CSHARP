@@ -41,7 +41,7 @@ public class BallFactory
                 ball.ActualPosition.Y,
                 ball.ActualPosition.Dimension,
                 ball.ActualPosition.Diameter),
-            EARTH_GRAVITY,
+            MOON_GRAVITY,
             STD_TICK);
     }
 
