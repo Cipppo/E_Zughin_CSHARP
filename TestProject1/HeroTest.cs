@@ -7,7 +7,7 @@ using EZ_Csharp.utils;
 namespace TestProject1;
 
 [TestFixture]
-public class Tests
+public class HeroTests
 {
     [Test]
     public void TestHeroDirections()
