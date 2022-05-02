@@ -18,9 +18,5 @@ public class HeroComponent
     {
         this.S = new Shape(pos, new FullPair<int, int>(Width, Height));
     }
-
-    private Shape GetShape()
-    {
-        return this.S;
-    }
+    
 }
