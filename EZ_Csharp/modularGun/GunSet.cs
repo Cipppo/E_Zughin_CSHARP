@@ -4,20 +4,13 @@ namespace EZ_Csharp.modularGun;
 
 public class GunSet : IGunBag
 {
-    public Bullet Arpion { get; }
-    private GunTypes CurrentGun { set; get; }
+    public Bullet Arpion { get; } = new Arpion();
+    private GunTypes CurrentGun { set; get; } = GunTypes.Arpion;
 
-    public GunSet()
-    {
-        this.Arpion = new Arpion();
-        this.CurrentGun = GunTypes.Arpion;
-    }
-    
-    private Optional<Bullet> GetSingleArpion()
-    {
-        return Arpion.Status == Status.Idle ? Optional<Bullet>.of(this.Arpion) : Optional<Bullet>.Empty();
-    }
-    
+    public GunSet(){}
+
+    private Optional<Bullet> GetSingleArpion() => Arpion.Status == Status.Idle ? Optional<Bullet>.of(this.Arpion) : Optional<Bullet>.Empty();
+
     public void ResetGunType(GunTypes caller)
     {
         if (caller != this.CurrentGun)
