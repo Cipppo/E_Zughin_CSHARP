@@ -21,7 +21,7 @@ public class ArpionComponent
         this.S = new Shape(startPos, new FullPair<int, int>(Width, Height));
     }
 
-    private void ChangeLocation(EntityPos2D newPos) => this.S = new Shape(newPos, new FullPair<int, int>(Width, Height));
+    public void ChangeLocation(EntityPos2D newPos) => this.S = new Shape(newPos, new FullPair<int, int>(Width, Height));
 
     public void SetDirection(Directions dir, Shape shape)
     {
