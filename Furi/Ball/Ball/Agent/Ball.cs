@@ -14,7 +14,7 @@ public class Ball
     private int Size { get; }
     private readonly double _tickFactor;
 
-    protected Ball(Trajectory trajectory, SpherePos2D position, double gravity, double tickFactor)
+    public Ball(Trajectory trajectory, SpherePos2D position, double gravity, double tickFactor)
     {
         Trajectory = trajectory;
         ActualPosition = position;
