@@ -19,7 +19,7 @@ namespace Progetto
 
         public int GetScore() { return this.score; }
 
-        public string GetDate() { return this.nickname; }
+        public string GetDate() { return this.date; }
 
         public void increaseScore(int score)
         {
@@ -28,7 +28,7 @@ namespace Progetto
 
         public override string ToString()
         {
-            string line = string.Format("{0}   {1}   {2}", nickname, score, date);
+            string line = string.Format("{0} {1} {2}", nickname, score, date);
             return line;
         }
     }
