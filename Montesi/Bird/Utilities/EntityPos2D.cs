@@ -1,28 +1,20 @@
 namespace Montesi.Utilities
 {
-    public class EntityPos2D : Pos2D<int>
+    public sealed class EntityPos2D : Pos2D<int>
     {
         public EntityPos2D(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            base.X = x;
+            base.Y = y;
         }
 
-        public override int X
-        {
-            get => x;
-            set => x = value;
-        }
+        public new int X => base.X;
 
-        public override int Y
-        {
-            get => y; 
-            set => y = value;
-        }
+        public new int Y => base.Y;
 
         public override string ToString()
         {
-            return "X = " + x + " Y = " + y;
+            return "X = " + base.X + " Y = " + base.Y;
         }
     }
 }
