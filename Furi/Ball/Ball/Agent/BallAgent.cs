@@ -33,8 +33,8 @@ public class BallAgent
         if (_ball.ActualPosition.Dimension == Dimensions.Grandson) throw new IllegalStateException();
         var ball1 = GenerateBall();
         var ball2 = GenerateBall();
-            
-        ball1.Velocity.InvertVx();
+
+        ball1.Velocity.Vx *= -1;
 
         var list = new List<Ball>
         {
@@ -51,7 +51,7 @@ public class BallAgent
 
     public SpherePos2D GetBallPosition() => _ball.ActualPosition;
 
-    public void ApplyConstraints(double position, Boundary bound) => _ball.ApplyConstraints(position, bound);
+    public void ApplyConstraints(double position, int bound) => _ball.ApplyConstraints(position, bound);
 
     public void Terminate() => _stop = true;
 
