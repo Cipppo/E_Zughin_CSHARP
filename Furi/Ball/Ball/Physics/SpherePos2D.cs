@@ -13,7 +13,25 @@ public class SpherePos2D : Pos2D<double>
         Diameter = (int)(diameter * diameterFactor) ;
         Dimension = dimension;
     }
-    
+
+    private bool Equals(SpherePos2D other)
+    {
+        return X.Equals(other.X) && Y.Equals(other.Y);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((SpherePos2D) obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
+    }
+
     public override string ToString()
     {
         return "(" + X + ", " + Y + ")";
