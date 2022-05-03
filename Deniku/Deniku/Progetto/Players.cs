@@ -22,7 +22,7 @@ namespace Progetto
         {
             if(n == CMax)
             {
-                if (!RemoveLastPlayerByScore(p.GetScore())){
+                if (!RemoveLastPlayerByScore(p.GetScore().GetScore())){
                     return;
                 }
             }
@@ -32,7 +32,7 @@ namespace Progetto
 
         public bool RemoveLastPlayerByScore(int score)
         {
-            if (players[n-1].GetScore() < score)
+            if (players[n-1].GetScore().GetScore() < score)
             {
                 players[n - 1] = null;
                 n--;
@@ -48,7 +48,7 @@ namespace Progetto
             {
                 Player key = players[i];
                 int j = i - 1;
-                while (j >= 0 && players[j].GetScore() < key.GetScore())
+                while (j >= 0 && players[j].GetScore().GetScore() < key.GetScore().GetScore())
                 {
                     players[j + 1] = players[j];
                     j--;
