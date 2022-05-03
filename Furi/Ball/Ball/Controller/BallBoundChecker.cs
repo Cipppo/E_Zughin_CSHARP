@@ -20,13 +20,13 @@ public class BallBoundChecker
         var y =  (t.GetBallPosition().Y * _height);
         var diameter = t.GetBallPosition().Diameter;
         if (x < 0) {
-            t.ApplyConstraints((double)Boundary.X0 , Boundary.X0);
+            t.ApplyConstraints(0.1, 1);
         } else if (x + diameter >= _width) {
-            t.ApplyConstraints(t.GetBallPosition().X - (diameter * 0.0001), Boundary.X1);
-        } else if (y + diameter > _height) {
-            t.ApplyConstraints(t.GetBallPosition().Y - 0.009, Boundary.Y1);
+            t.ApplyConstraints(t.GetBallPosition().Y - 0.009 , 1);
+        } else if (y + diameter >= _height) {
+            t.ApplyConstraints(t.GetBallPosition().Y - 0.009, 0);
         } else if (y < -1) {
-            t.ApplyConstraints((double)Boundary.Y0, Boundary.Y0);
+            t.ApplyConstraints(0, 0);
         }
     }
 }
