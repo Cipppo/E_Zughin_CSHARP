@@ -12,6 +12,8 @@ public class FakeVisual
     public ArpionComponent ArpionComponent { get; }
     
     public HeroComponent HeroComponent { get; }
+    
+    public EntityPos2D startPos { get; }
 
     public FakeVisual(int width, int heigth, EntityPos2D startPos)
     {
@@ -21,6 +23,7 @@ public class FakeVisual
         this.ArpionComponent = new ArpionComponent(startPos);
         this.HeroComponent.ChangeLocation(startPos);
         this.HeroComponent.ChangeLocation(startPos);
+        this.startPos = startPos;
     }
 
     public void Move(EntityPos2D pos)
