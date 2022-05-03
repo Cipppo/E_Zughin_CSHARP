@@ -4,24 +4,42 @@ public class EntityPos2D : Pos2D<int>
 {
     public EntityPos2D(int x, int y)
     {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
     }
 
     public override int X
     {
-        get => this.x;
-        set => this.x = value;
+        get;
+        set;
     }
 
     public override int Y
     {
-        get => this.y;
-        set => this.y = value;
+        get;
+        set;
     }
 
     public override string ToString()
     {
-        return "X = " + this.x + " Y = " + this.y;
+        return "X = " + this.X + " Y = " + this.Y;
+    }
+
+    protected bool Equals(EntityPos2D other)
+    {
+        return X == other.X && Y == other.Y;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((EntityPos2D)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
     }
 }
