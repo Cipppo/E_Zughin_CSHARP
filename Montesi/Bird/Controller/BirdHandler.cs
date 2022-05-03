@@ -29,7 +29,7 @@ namespace Montesi.Controller
         private bool _terminated;
 
         /// <summary>
-        /// This thread make the bird move.
+        /// This thread make the bird move if it isn't dead and the thread isn't terminated.
         /// </summary>
         protected override void RunThread()
         {
@@ -76,6 +76,9 @@ namespace Montesi.Controller
         /// <returns>The time to wait.</returns>
         private int GetTimeToSleep() => _random.Next(10) + 5;
 
+        /// <summary>
+        /// Set the death for the actual bird.
+        /// </summary>
         public void SetBirdDead()
         {
             _birdDead = true;
@@ -90,6 +93,9 @@ namespace Montesi.Controller
         public Optional<BirdShape> GetShape() => 
             Actor.IsPresent ? Optional<BirdShape>.Of(Actor.Get().S) : Optional<BirdShape>.Empty();
 
+        /// <summary>
+        /// Terminates the thread.
+        /// </summary>
         public void Terminate()
         {
             SetBirdDead();
