@@ -45,7 +45,7 @@ namespace Montesi.Utilities
         }
 
         /// <summary>
-        /// Perform right movement along with vertical movement.
+        /// Perform right movement along with vertical movement (if the bird is alive).
         /// </summary>
         public void MoveRight()
         {
@@ -60,7 +60,7 @@ namespace Montesi.Utilities
         }
 
         /// <summary>
-        /// Perform left movement along with vertical movement.
+        /// Perform left movement along with vertical movement (if the bird is alive).
         /// </summary>
         public void MoveLeft()
         {
@@ -119,6 +119,9 @@ namespace Montesi.Utilities
             }
         }
 
+        /// <summary>
+        /// Set the bird's death.
+        /// </summary>
         public void SetDead() => BirdDead = true;
     }
 }
