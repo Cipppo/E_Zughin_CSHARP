@@ -69,9 +69,8 @@ public class BallFactory
         SpherePos2D newPos = new SpherePos2D(
             ball.ActualPosition.X,
             ball.ActualPosition.Y,
-            ball.ActualPosition.Dimension,
+            Dimension.GetChild(ball.ActualPosition.Dimension),
             ball.ActualPosition.Diameter);
-
         return CompleteBall(
             ball.Trajectory.Theta,
             ball.Trajectory.InitialVelocity,
