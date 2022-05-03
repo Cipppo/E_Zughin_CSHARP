@@ -66,9 +66,20 @@ public class BallTests
         Assert.IsTrue(runner.GetBalls().Count.Equals(1), "Runner has wrong ball number");
         Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Father));
 
+        runner.Duplication(runner.GetBalls()[0]);
+        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Son));
+        var ball1 = runner.GetBalls()[0];
+        var ball2 = runner.GetBalls()[1];
         
+        runner.Duplication(ball1);
+        runner.Duplication(ball2);
 
+        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Grandson));
 
+        ball1 = runner.GetBalls()[0];
+        
+        Assert.Throws<IllegalStateException>(() => ball1.Duplicate());
+        
         runner.TerminateAll();
     }
 
