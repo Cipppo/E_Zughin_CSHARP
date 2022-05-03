@@ -1,10 +1,8 @@
 ﻿<Properties StartupConfiguration="{A1179D09-2670-447C-8E88-2F9A313BBB21}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/bin/Debug/BestPlayersSaves.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/EntityPos2D.cs">
     <Files>
-      <File FileName="Progetto/Program.cs" Line="19" Column="1" />
-      <File FileName="Progetto/Player.cs" />
-      <File FileName="Progetto/Players.cs" />
-      <File FileName="Progetto/bin/Debug/BestPlayersSaves.txt" Line="1" Column="1" />
+      <File FileName="Progetto/BonusGenerator.cs" Line="20" Column="1" />
+      <File FileName="Progetto/EntityPos2D.cs" Line="4" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,10 +10,9 @@
           <Node name="Deniku" expanded="True">
             <Node name="Progetto" expanded="True">
               <Node name="bin" expanded="True">
-                <Node name="Debug" expanded="True">
-                  <Node name="BestPlayersSaves.txt" selected="True" />
-                </Node>
+                <Node name="Debug" expanded="True" />
               </Node>
+              <Node name="EntityPos2D.cs" selected="True" />
             </Node>
           </Node>
         </State>
