@@ -4,7 +4,7 @@ namespace EZ_Csharp.hero;
 
 public class Hero : IPausable
 {
-    private EntityPos2D Pos { get; set; } = new(0, 0);
+    public EntityPos2D Pos { get; set; } = new(0, 0);
     public Directions Dir { get; private set; } = Directions.LEFT;
     public HeroStatus Status { get; private set; } = HeroStatus.Neutral;
     public int Lives { get; private set; } = 3;
@@ -20,6 +20,7 @@ public class Hero : IPausable
             Directions.LEFT => new EntityPos2D(this.Pos.X - 1, this.Pos.Y),
             _ => Pos
         };
+        
         this.Dir = newDir;
     }
 
