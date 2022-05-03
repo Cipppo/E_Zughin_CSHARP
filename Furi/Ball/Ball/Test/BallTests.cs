@@ -61,40 +61,30 @@ public class BallTests
     [Test]
     public void TestDuplication()
     {
-        var runner = new BallRunner(1, new BallBoundChecker(200, 200));
+        const int ballsToGenerate = 1;
+        var runner = new BallRunner(ballsToGenerate, new BallBoundChecker(200, 200));
         runner.Start();
-        Assert.IsTrue(runner.GetBalls().Count.Equals(1), "Runner has wrong ball number");
-        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Father));
-
+        //Testing if runner built required balls and checks if those are Dimensions.Father
+        Assert.IsTrue(runner.GetBalls().Count == ballsToGenerate, "Runner has wrong ball number");
+        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension == Dimensions.Father);
+        
+        //Checks if duplication worked
         runner.Duplication(runner.GetBalls()[0]);
-        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Son));
+        Assert.IsTrue(runner.GetBalls().Count == ballsToGenerate*2);
+        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension == Dimensions.Son);
+        
+        //duplicating all the balls
         var ball1 = runner.GetBalls()[0];
-        var ball2 = runner.GetBalls()[1];
-        
         runner.Duplication(ball1);
-        runner.Duplication(ball2);
 
-        Assert.IsTrue(runner.GetBalls()[0].GetBallPosition().Dimension.Equals(Dimensions.Grandson));
-
-        ball1 = runner.GetBalls()[0];
-        
-        Assert.Throws<IllegalStateException>(() => ball1.Duplicate());
+        //finding the child ball and checking if it's splittable (else it throws IllegalStateException)
+        var b1 = runner.GetBalls().Find(t => t.GetBallPosition().Dimension == Dimensions.Grandson);
+        Assert.NotNull(b1);
+        Assert.Throws<IllegalStateException>(() => b1.Duplicate());
         
         runner.TerminateAll();
     }
 
-    [Test]
-    public void TestDuplicationGranchild()
-    {
-        var runner = new BallRunner(1, new BallBoundChecker(200, 200));
-        runner.Start();
-        runner.Duplication(runner.GetBalls().ToArray()[0]);
-        runner.Duplication(runner.GetBalls().ToArray()[0]);
-        runner.GetBalls().ForEach(t => Console.WriteLine(t.GetBallPosition()));
-        Assert.True(runner.GetBalls().Count.Equals(3));
-        //Assert.Throws<IllegalStateException>(() => child.Duplicate());
-        runner.TerminateAll();
-    }
 
     private SpherePos2D CopyOfPosition(SpherePos2D pos)
     {
