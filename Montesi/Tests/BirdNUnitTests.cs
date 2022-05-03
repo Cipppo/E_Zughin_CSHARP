@@ -9,11 +9,11 @@ namespace Tests
 {
     public class BirdNUnitTests
     {
-        private const int SizeX = 40;
-        private const int SizeY = 15;
-        private const int Width = 5;
-        private const int Height = 3;
-        private const int StartY = 0;
+        private const int SizeX = 40;   // width of the stage;
+        private const int SizeY = 15;   // height of the stage;
+        private const int Width = 5;    // width of the bird;
+        private const int Height = 3;   // height of the bird;
+        private const int StartY = 0;   // start height of the bird.
         
         private BirdMover _mover;
         private Optional<BirdActor> Actor { get; set; }
@@ -23,6 +23,9 @@ namespace Tests
         private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
         private BirdHandler _birdHandler;
 
+        /// <summary>
+        /// Set up the bird for the tests.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
@@ -31,6 +34,9 @@ namespace Tests
             _mover = new BirdMover(Actor.Get(), _bc);
         }
         
+        /// <summary>
+        /// Check bird's right movement.
+        /// </summary>
         [Test]
         public void Moving_Bird_Right()
         {
@@ -39,6 +45,9 @@ namespace Tests
             Assert.AreEqual(1, Actor.Get().S.Pos.X);
         }
         
+        /// <summary>
+        /// Check bird's down movement
+        /// </summary>
         [Test]
         public void Moving_Bird_Down()
         {
@@ -47,6 +56,9 @@ namespace Tests
             Assert.AreEqual(1, Actor.Get().S.Pos.Y);
         }
 
+        /// <summary>
+        /// Check righter bound.
+        /// </summary>
         [Test]
         public void Check_Bounds_Width()
         {
@@ -55,6 +67,9 @@ namespace Tests
             Assert.False(_bc.IsInside(Actor.Get().S.Pos, Width, Height));
         }
         
+        /// <summary>
+        /// Check lower bound.
+        /// </summary>
         [Test]
         public void Check_Bounds_Height()
         {
@@ -63,14 +78,22 @@ namespace Tests
             Assert.False(_bc.IsInside(Actor.Get().S.Pos, Width, Height));
         }
 
+        /// <summary>
+        /// Check if optional functionality is working.
+        /// </summary>
         [Test]
         public void Check_Bird_Optional_IsPresent()
         {
+            Assert.True(Actor.IsPresent);
+            
             Actor = Optional<BirdActor>.Empty();
 
             Assert.False(Actor.IsPresent);
         }
 
+        /// <summary>
+        /// Check if the bird die correctly.
+        /// </summary>
         [Test]
         public void Check_Bird_Dead()
         {
@@ -84,6 +107,9 @@ namespace Tests
             _birdHandler.Terminate();
         }
 
+        /// <summary>
+        /// Check if another bird (after a the max wait time) spawn.
+        /// </summary>
         [Test]
         public void Check_Bird_Respawn()
         {
@@ -91,7 +117,7 @@ namespace Tests
             _birdHandler.Start();
             Thread.Sleep(1000);
             _birdHandler.SetBirdDead();
-            Thread.Sleep(15000);
+            Thread.Sleep(15000); // max wait time.
 
             Assert.True(_birdHandler.Actor.IsPresent);
             _birdHandler.Terminate();
