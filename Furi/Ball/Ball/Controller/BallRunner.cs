@@ -32,7 +32,9 @@ public class BallRunner
         {
             if (!_stop)
             {
+                _balls.ForEach(t => t.Pause());
                 _balls.ForEach(t => _checker.CheckConstraints(t));
+                _balls.ForEach(t => t.Resume());
             }
             Thread.Sleep(10);
         }
