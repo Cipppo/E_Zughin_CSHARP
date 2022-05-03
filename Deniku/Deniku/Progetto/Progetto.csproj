@@ -36,6 +36,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Players.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="BonusGenerator.cs" />
+    <Compile Include="EntityPos2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\BestPlayersSaves.txt" />
