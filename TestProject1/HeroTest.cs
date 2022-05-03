@@ -3,6 +3,7 @@ using NUnit.Framework;
 using EZ_Csharp.hero;
 using EZ_Csharp.modularGun;
 using EZ_Csharp.utils;
+using Microsoft.VisualBasic;
 
 namespace TestProject1;
 
@@ -44,5 +45,21 @@ public class HeroTests
         var hero = new Hero();
         hero.Hit();
         Assert.AreEqual(HeroStatus.Hit, hero.Status);
+    }
+
+    [Test]
+    public void TestHeroLeftMovement()
+    {
+        var hero = new Hero();
+        hero.Move(Directions.LEFT);
+        Assert.AreEqual(new EntityPos2D(-1, 0), hero.Pos);
+    }
+
+    [Test]
+    public void TestHeroRightMovement()
+    {
+        var hero = new Hero();
+        hero.Move(Directions.RIGHT);
+        Assert.AreEqual(new EntityPos2D(1, 0), hero.Pos);
     }
 }
