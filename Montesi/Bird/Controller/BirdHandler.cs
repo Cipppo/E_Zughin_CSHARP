@@ -25,17 +25,17 @@ namespace Montesi.Controller
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
         private BirdMovementUtils _movUtils;
         private int _timeToSleep;
-        private bool BirdDead { get; set; }
-        private bool Terminated { get; set; }
+        private bool _birdDead;
+        private bool _terminated;
 
         /// <summary>
         /// This thread make the bird move.
         /// </summary>
         protected override void RunThread()
         {
-            while (!Terminated)
+            while (!_terminated)
             {
-                while (!BirdDead)
+                while (!_birdDead)
                 {
                     CreateBird();
                     Thread.Sleep(20);
@@ -52,10 +52,9 @@ namespace Montesi.Controller
                     Actor = Optional<BirdActor>.Empty();
                     Console.WriteLine("Reached Limit of the stage (or bird was hit), waiting " + _timeToSleep + " seconds...");
                     Thread.Sleep(_timeToSleep * 1000);
-                    BirdDead = false;
+                    _birdDead = false;
                 }   
             }
-            // ReSharper disable once FunctionNeverReturns
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace Montesi.Controller
 
         public void SetBirdDead()
         {
-            BirdDead = true;
+            _birdDead = true;
             _movUtils.SetDead();
         }
         
@@ -94,7 +93,7 @@ namespace Montesi.Controller
         public void Terminate()
         {
             SetBirdDead();
-            Terminated = true;
+            _terminated = true;
         }
     }
 }

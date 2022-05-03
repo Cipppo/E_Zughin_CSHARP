@@ -23,7 +23,6 @@ namespace Montesi.Utilities
         public void Start() => _thread.Start();
         public void Join() => _thread.Join();
         public bool IsAlive => _thread.IsAlive;
-        public void Abort() => _thread.Abort();
 
         /// <summary>
         /// To override in the desired class.

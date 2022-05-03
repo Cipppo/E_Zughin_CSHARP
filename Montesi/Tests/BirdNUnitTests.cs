@@ -81,7 +81,6 @@ namespace Tests
             Thread.Sleep(1000);
             
             Assert.False(_birdHandler.Actor.IsPresent);
-            
             _birdHandler.Terminate();
         }
 
