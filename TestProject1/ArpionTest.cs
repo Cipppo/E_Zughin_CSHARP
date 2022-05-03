@@ -26,7 +26,4 @@ public class ArpionTest
         arpion.Restore();
         Assert.Zero(arpion.Steps);
     }
-    
-        
-    
 }
