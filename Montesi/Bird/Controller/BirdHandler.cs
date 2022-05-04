@@ -9,7 +9,7 @@ namespace Montesi.Controller
     /// The handler of the bird.
     /// This class manage the bird spawning and movement.
     /// </summary>
-    public class BirdHandler : BaseThread
+    public class BirdHandler : BaseThread, IPausable
     {
         private const int SizeX = 40;
         private const int SizeY = 15;
@@ -27,6 +27,7 @@ namespace Montesi.Controller
         private int _timeToSleep;
         private bool _birdDead;
         private bool _terminated;
+        private bool _pause;
 
         /// <summary>
         /// This thread make the bird move if it isn't dead and the thread isn't terminated.
@@ -37,22 +38,25 @@ namespace Montesi.Controller
             {
                 while (!_birdDead)
                 {
-                    CreateBird();
-                    Thread.Sleep(20);
-                    Console.WriteLine("Chosen Direction: " + _dir);
-                    switch (_startPosX)
+                    while (!_pause)
                     {
-                        case 0:
-                            _movUtils.MoveRight();
-                            break;
-                        case SizeX - Width:
-                            _movUtils.MoveLeft();
-                            break;
+                        CreateBird();
+                        Thread.Sleep(20);
+                        Console.WriteLine("Chosen Direction: " + _dir);
+                        switch (_startPosX)
+                        {
+                            case 0:
+                                _movUtils.MoveRight();
+                                break;
+                            case SizeX - Width:
+                                _movUtils.MoveLeft();
+                                break;
+                        }
+                        Actor = Optional<BirdActor>.Empty();
+                        Console.WriteLine("Reached Limit of the stage (or bird was hit), waiting " + _timeToSleep + " seconds...");
+                        Thread.Sleep(_timeToSleep * 1000);
+                        _birdDead = false;
                     }
-                    Actor = Optional<BirdActor>.Empty();
-                    Console.WriteLine("Reached Limit of the stage (or bird was hit), waiting " + _timeToSleep + " seconds...");
-                    Thread.Sleep(_timeToSleep * 1000);
-                    _birdDead = false;
                 }   
             }
         }
@@ -100,6 +104,24 @@ namespace Montesi.Controller
         {
             SetBirdDead();
             _terminated = true;
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="IPausable"/>
+        /// </summary>
+        public void PauseAll()
+        {
+            _pause = true;
+            _movUtils.SetPause();
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="IPausable"/>
+        /// </summary>
+        public void ResumeAll()
+        {
+            _pause = false;
+            _movUtils.SetPause();
         }
     }
 }
