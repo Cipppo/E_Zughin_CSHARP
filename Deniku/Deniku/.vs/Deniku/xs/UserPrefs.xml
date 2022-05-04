@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{A1179D09-2670-447C-8E88-2F9A313BBB21}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/EntityPos2D.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/BonusGenerator.cs">
     <Files>
-      <File FileName="Progetto/BonusGenerator.cs" Line="20" Column="1" />
-      <File FileName="Progetto/EntityPos2D.cs" Line="4" Column="11" />
+      <File FileName="Progetto/BonusGenerator.cs" Line="34" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +11,8 @@
               <Node name="bin" expanded="True">
                 <Node name="Debug" expanded="True" />
               </Node>
-              <Node name="EntityPos2D.cs" selected="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="BonusGenerator.cs" selected="True" />
             </Node>
           </Node>
         </State>
