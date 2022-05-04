@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Montesi.Actions;
 using Montesi.Component;
@@ -120,6 +121,28 @@ namespace Tests
             Thread.Sleep(15000); // max wait time.
 
             Assert.True(_birdHandler.Actor.IsPresent);
+            _birdHandler.Terminate();
+        }
+
+        /// <summary>
+        /// Check if the pause status works as it should.
+        /// </summary>
+        [Test]
+        public void Check_Pause_Status()
+        {
+            _birdHandler = new BirdHandler();
+            _birdHandler.Start();
+            Thread.Sleep(1000);
+            _birdHandler.PauseAll();
+            var firstPos = _birdHandler.Actor.Get().S.Pos;
+            Thread.Sleep(1000);
+            
+            Assert.True(firstPos == _birdHandler.Actor.Get().S.Pos);
+            
+            _birdHandler.ResumeAll();
+            Thread.Sleep(1000);
+            
+            Assert.False(firstPos == _birdHandler.Actor.Get().S.Pos);
             _birdHandler.Terminate();
         }
     }
