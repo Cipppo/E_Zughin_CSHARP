@@ -1,6 +1,7 @@
 using Ball.Agent;
 using Ball.Controller;
 using Ball.Physics;
+using Ball.Utils;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
 using NUnit.Framework;
 
@@ -9,25 +10,25 @@ namespace Ball.Test;
 [TestFixture]
 public class BallTests
 {
-    private Agent.Ball ball = BallFactory.RandomPos();
+    private Agent.Ball _ball = BallFactory.RandomPos();
     
     [Test]
     public void BasicMovementTest()
     {
-        var pos = CopyOfPosition(ball.ActualPosition);
-        ball.UpdatePos();
-        Assert.IsFalse(ball.ActualPosition.Equals(pos), "Ball should be moved away from starting point");
+        var pos = CopyOfPosition(_ball.ActualPosition);
+        _ball.UpdatePos();
+        Assert.IsFalse(_ball.ActualPosition.Equals(pos), "Ball should be moved away from starting point");
         Reset();
     }
 
     [Test]
     public void TestThreadRunning()
     {
-        var agent = new BallAgent(ball);
+        var agent = new BallAgent(_ball);
         var pos = CopyOfPosition(agent.GetBallPosition());
         agent.Start();
         Thread.Sleep(30);
-        Assert.IsFalse(ball.ActualPosition.Equals(pos), "Thread didn't updated position");
+        Assert.IsFalse(_ball.ActualPosition.Equals(pos), "Thread didn't updated position");
         agent.Terminate();
     }
 
@@ -35,24 +36,24 @@ public class BallTests
     public void TestWallCollision()
     {
         var checker = new BallBoundChecker(200, 200);
-        ball.ActualPosition.Y = 1; //Ball touching ground
-        var agent = new BallAgent(ball);
-        if (ball.Velocity.Vy > 0)
+        _ball.ActualPosition.Y = 1; //Ball touching ground
+        var agent = new BallAgent(_ball);
+        if (_ball.Velocity.Vy > 0)
         {
-            var pos = CopyOfPosition(ball.ActualPosition);
+            var pos = CopyOfPosition(_ball.ActualPosition);
             agent.Start();
             Thread.Sleep(10);
             checker.CheckConstraints(agent);
-            Assert.IsTrue(ball.ActualPosition.Y < pos.Y, "Ball should have been moving up");
+            Assert.IsTrue(_ball.ActualPosition.Y < pos.Y, "Ball should have been moving up");
             agent.Terminate(); 
         }
         else
         {
-            var pos = CopyOfPosition(ball.ActualPosition);
+            var pos = CopyOfPosition(_ball.ActualPosition);
             agent.Start();
             Thread.Sleep(10);
             checker.CheckConstraints(agent);
-            Assert.IsTrue(ball.ActualPosition.Y > pos.Y, "Ball should have been moving up");
+            Assert.IsTrue(_ball.ActualPosition.Y > pos.Y, "Ball should have been moving up");
             agent.Terminate();
         }
         Reset();
@@ -89,7 +90,7 @@ public class BallTests
     public void TestStopAndResume()
     {
         Reset();
-        var agent = new BallAgent(ball);
+        var agent = new BallAgent(_ball);
         agent.Start();
         Thread.Sleep(50);
         agent.Pause();
@@ -103,6 +104,17 @@ public class BallTests
         agent.Terminate();
     }
 
+    [Test]
+    public void CollisionWithShape()
+    {
+        Reset();
+        var pos = CopyOfPosition(_ball.ActualPosition);
+        //placing a rectangle in the same position of the ball
+        var rect = new SquaredShape(50,50, new SimplePos2D((int)pos.X, (int)pos.Y));
+        
+        Assert.IsTrue(IntersectionChecker.IsBallCollision(_ball.ActualPosition, rect));
+    }
+
     private SpherePos2D CopyOfPosition(SpherePos2D pos)
     {
         return new SpherePos2D(
@@ -114,6 +126,6 @@ public class BallTests
 
     private void Reset()
     {
-        ball = BallFactory.RandomPos();
+        _ball = BallFactory.RandomPos();
     }
 }
