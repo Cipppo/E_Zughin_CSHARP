@@ -38,7 +38,7 @@ Il gioco si basa su un personaggio che, sparando verso l'alto, deve riuscire a f
 
 ## Suddivisione del lavoro:
 
-- Michele Montesi: **WIP**
-- Luca Rapolla: **WIP**
-- Stefano Furi: **WIP**
-- Ezmiron Deniku: **WIP**
+- Michele Montesi: Entita' Uccello
+- Luca Rapolla: Arpione e personaggio principale
+- Stefano Furi: Entita' sfera
+- Ezmiron Deniku: Bonus frutta
