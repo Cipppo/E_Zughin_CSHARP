@@ -44,6 +44,9 @@
     <Compile Include="EntityPos2D.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="Shape.cs" />
+    <Compile Include="Pickable.cs" />
+    <Compile Include="BonusEntity.cs" />
+    <Compile Include="Rectagnle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\BestPlayersSaves.txt" />
