@@ -21,14 +21,14 @@ namespace Progetto
 
         public override int X
         {
-            get => this.x;
-            set => this.x = value;
+            get => x;
+            set => x = value;
         }
 
         public override int Y
         {
-            get => this.y;
-            set => this.y = value;
+            get => y;
+            set => y = value;
         }
     }
 }

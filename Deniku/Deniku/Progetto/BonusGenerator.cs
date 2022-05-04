@@ -30,5 +30,15 @@ namespace Progetto
             Random rnd = new Random();
             return new EntityPos2D(rnd.Next(bounds.GetX() - BONUS_WIDTH), bounds.GetY() - BONUS_HEIGHT);
         }
+
+        private Shape GenerateRandomShape()
+        {
+            return new Shape(GenerateRandomPos(), BONUS_WIDTH, BONUS_WIDTH);
+        }
+
+        public BonusEntity GenerateNextBonus()
+        {
+            return new BonusEntity(GenerateNextScore(), GenerateRandomShape());
+        }
     }
 }
