@@ -107,14 +107,57 @@ public class BallTests
     [Test]
     public void CollisionWithShape()
     {
+        //Assuming to be in a stage 500x500
+        var checker = new BallBoundChecker(500, 500);
         Reset();
-        var pos = CopyOfPosition(_ball.ActualPosition);
-        //placing a rectangle in the same position of the ball
-        var rect = new SquaredShape(50,50, new SimplePos2D((int)pos.X, (int)pos.Y));
+        var agent = new BallAgent(_ball);
+        var x = (int)(_ball.ActualPosition.X * checker.GetDimensions().X);
+        var y = (int)(_ball.ActualPosition.Y * checker.GetDimensions().Y);
         
-        Assert.IsTrue(IntersectionChecker.IsBallCollision(_ball.ActualPosition, rect));
+        //full intersection
+        var rect = SimpleSquaredShape(x, y);
+        Assert.IsTrue(checker.CheckEnemyCollision(rect, agent));
+        
+        //EDGES TESTS
+        //intersection with bottom right edge of the rectangle
+        rect = SimpleSquaredShape(x + _ball.ActualPosition.Diameter, y + _ball.ActualPosition.Diameter);
+        Assert.IsTrue(checker.CheckEnemyCollision(rect, agent));
+        
+        //no intersection with bottom right edge of the rectangle
+        rect = SimpleSquaredShape(x + _ball.ActualPosition.Diameter + 5, y + _ball.ActualPosition.Diameter);
+        Assert.IsFalse(checker.CheckEnemyCollision(rect, agent));
+        
+        //intersection with top left edge of the rectangle
+        rect = SimpleSquaredShape(x - 50, y + 50);
+        Assert.IsTrue(checker.CheckEnemyCollision(rect, agent));
+        
+        //no intersection with top left edge of the rectangle
+        rect = SimpleSquaredShape(x - 55, y + 50);
+        Assert.IsFalse(checker.CheckEnemyCollision(rect, agent));
+        
+        //SIDES TESTS
+        //ball touching bottom side of rectangle
+        rect = SimpleSquaredShape(x, y + _ball.ActualPosition.Diameter);
+        Assert.IsTrue(checker.CheckEnemyCollision(rect, agent));
+        
+        //ball not touching bottom side of rectangle
+        rect = SimpleSquaredShape(x, y + _ball.ActualPosition.Diameter + 5);
+        Assert.IsFalse(checker.CheckEnemyCollision(rect, agent));
+        
+        //ball touching top side of rectangle
+        rect = SimpleSquaredShape(x, y - 50);
+        Assert.IsTrue(checker.CheckEnemyCollision(rect, agent));
+        
+        //ball not touching top side of rectangle
+        rect = SimpleSquaredShape(x, y - 55);
+        Assert.IsFalse(checker.CheckEnemyCollision(rect, agent));
     }
 
+    private SquaredShape SimpleSquaredShape(int x, int y)
+    {
+        return new SquaredShape(50, 50 ,new SimplePos2D(x, y));
+    }
+    
     private SpherePos2D CopyOfPosition(SpherePos2D pos)
     {
         return new SpherePos2D(
