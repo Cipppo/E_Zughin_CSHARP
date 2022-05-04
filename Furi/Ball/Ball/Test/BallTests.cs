@@ -58,6 +58,24 @@ public class BallTests
         }
         Reset();
     }
+    
+    [Test]
+    public void TestStopAndResume()
+    {
+        Reset();
+        var agent = new BallAgent(_ball);
+        agent.Start();
+        Thread.Sleep(50);
+        agent.Pause();
+        var pos = CopyOfPosition(agent.GetBallPosition());
+        Thread.Sleep(50);
+        Assert.IsTrue(agent.GetBallPosition().Equals(pos), "Ball should not be moving after stop is called");
+        agent.Resume();
+        Thread.Sleep(30);
+        Assert.IsFalse(agent.GetBallPosition().Equals(pos));
+        
+        agent.Terminate();
+    }
 
     [Test]
     public void TestDuplication()
@@ -84,24 +102,6 @@ public class BallTests
         Assert.Throws<IllegalStateException>(() => b1?.Duplicate());
         
         runner.TerminateAll();
-    }
-
-    [Test]
-    public void TestStopAndResume()
-    {
-        Reset();
-        var agent = new BallAgent(_ball);
-        agent.Start();
-        Thread.Sleep(50);
-        agent.Pause();
-        var pos = CopyOfPosition(agent.GetBallPosition());
-        Thread.Sleep(50);
-        Assert.IsTrue(agent.GetBallPosition().Equals(pos), "Ball should not be moving after stop is called");
-        agent.Resume();
-        Thread.Sleep(30);
-        Assert.IsFalse(agent.GetBallPosition().Equals(pos));
-        
-        agent.Terminate();
     }
 
     [Test]
