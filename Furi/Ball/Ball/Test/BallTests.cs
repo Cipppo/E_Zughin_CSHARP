@@ -80,11 +80,46 @@ public class BallTests
         //finding the child ball and checking if it's splittable (else it throws IllegalStateException)
         var b1 = runner.GetBalls().Find(t => t.GetBallPosition().Dimension == Dimensions.Grandson);
         Assert.NotNull(b1);
-        Assert.Throws<IllegalStateException>(() => b1.Duplicate());
+        Assert.Throws<IllegalStateException>(() => b1?.Duplicate());
         
         runner.TerminateAll();
     }
 
+    [Test]
+    public void TestStop()
+    {
+        Reset();
+        var agent = new BallAgent(ball);
+        agent.Start();
+        Thread.Sleep(50);
+        agent.Pause();
+        var pos = CopyOfPosition(agent.GetBallPosition());
+        Thread.Sleep(50);
+        Assert.IsTrue(agent.GetBallPosition().Equals(pos), "Ball should not be moving after stop is called");
+        
+        agent.Terminate();
+    }
+
+    [Test]
+    public void TestMultipleBallPause()
+    {
+        var runner = new BallRunner(3, new BallBoundChecker(200, 200));
+        runner.Start();
+        Thread.Sleep(50);
+        runner.PauseAll();
+
+        var listBalls = runner.GetBalls().Select(b => b.GetBallPosition()).ToList();
+
+        Thread.Sleep(50);
+
+        for (var i = 0; i < 3; i++)
+        {
+            Assert.IsTrue(Equals(listBalls[i], runner.GetBalls()[i].GetBallPosition()), "Positions should not be changed");
+        }
+        
+        runner.TerminateAll();
+        
+    }
 
     private SpherePos2D CopyOfPosition(SpherePos2D pos)
     {
