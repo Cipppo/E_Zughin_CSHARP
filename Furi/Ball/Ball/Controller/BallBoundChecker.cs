@@ -1,5 +1,6 @@
 using Ball.Agent;
 using Ball.Physics;
+using Ball.Utils;
 
 namespace Ball.Controller;
 
@@ -29,4 +30,15 @@ public class BallBoundChecker
             t.ApplyConstraints(0, 0);
         }
     }
+
+    public bool CheckEnemyCollision(SquaredShape entity, BallAgent ball)
+    {
+        var bPos = new SpherePos2D(ball.GetBallPosition().X * _width,
+            ball.GetBallPosition().Y * _height,
+            ball.GetBallPosition().Dimension,
+            ball.GetBallPosition().Diameter);
+        return IntersectionChecker.IsBallCollision(bPos, entity);
+    }
+
+    public Pair<double> GetDimensions() => new Pair<double>(_width, _height);
 }
