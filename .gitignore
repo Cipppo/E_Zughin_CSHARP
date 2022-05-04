@@ -6,3 +6,5 @@ obj/
 *.sln
 *.csproj
 .DS_Store
+*.user
+
