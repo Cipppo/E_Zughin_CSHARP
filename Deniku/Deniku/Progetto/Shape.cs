@@ -2,28 +2,6 @@
 
 namespace Progetto
 {
-    public class Rectangle
-    {
-        private int x;
-        private int y;
-        private int width;
-        private int height;
-
-        public Rectangle(int x, int y, int width, int height)
-        {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
-
-        public int GetX() { return x; }
-        public int GetY() { return y; }
-        public int GetWidth() { return width; }
-        public int GetHeight() { return height; }
-    }
-        
-
     public class Shape
     {
         private Rectangle r;
@@ -35,8 +13,45 @@ namespace Progetto
 
         public EntityPos2D GetPos() { return new EntityPos2D(r.GetX(), r.GetY()); }
 
-        public Pair<int, int> getDimensions() { return new Pair<int, int>(r.GetWidth(), r.GetHeight()); }
+        public Pair<int, int> GetDimensions() { return new Pair<int, int>(r.GetWidth(), r.GetHeight()); }
 
         public Rectangle GetRectangle() { return r; }
+
+
+        public override bool Equals(object myObject)
+        {
+            Shape s = myObject as Shape;
+            return s == this;
+        }
+
+
+        public static bool operator ==(Shape s1, Shape s2)
+        {
+            if (s1.GetPos().X <= s2.GetPos().X && (s1.GetPos().X + s1.GetDimensions().GetX()) >= s2.GetPos().X)
+            {
+                return true;
+            } else
+            if (s1.GetPos().X <= (s2.GetPos().X + s2.GetDimensions().GetX()) && (s1.GetPos().X + s1.GetDimensions().GetX()) >= (s2.GetPos().X + s2.GetDimensions().GetX()))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator !=(Shape s1, Shape s2)
+        {
+            if (s1.GetPos().X < s2.GetPos().X && (s1.GetPos().X + s1.GetDimensions().GetX()) < s2.GetPos().X)
+            {
+                return true;
+            }
+            else
+            if (s1.GetPos().X > (s2.GetPos().X + s2.GetDimensions().GetX()) && (s1.GetPos().X + s1.GetDimensions().GetX()) > (s2.GetPos().X + s2.GetDimensions().GetX()))
+            {
+                return true;
+            }
+            return false;
+        }
     }
+
+    
 }

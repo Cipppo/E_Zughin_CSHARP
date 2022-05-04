@@ -10,16 +10,21 @@ namespace Progetto
 
         public static void Main(string[] args)
         {
-            Players players = new Players();
+            /*Players players = new Players();
             /*players.Add(new Player("GINO", 300, "09/03/2002"));
             players.Add(new Player("mario", 700, "09/03/2002"));
-            players.Add(new Player("marco", 200, "09/03/2002"));*/
+            players.Add(new Player("marco", 200, "09/03/2002"));*
 
             Read(ref players, CF);
 
             players.Sort();
             Save(players, CF);
-            PrintP(players);
+            PrintP(players);*/
+
+            BonusGenerator bonus = new BonusGenerator(new Pair<int, int>(50, 50));
+
+            Console.WriteLine("{0}", bonus.GenerateNextBonus().GetPoints());
+            Console.WriteLine("{0}", bonus.GenerateNextBonus().GetPoints());
         }
 
 
@@ -42,7 +47,8 @@ namespace Progetto
                 {
                     string[] parts = line.Split(';');
                     string name = parts[0].Trim();
-                    int score = int.Parse(parts[1]);
+                    Score score = new Score();
+                    score.RaiseScore(int.Parse(parts[1]));
                     string date = parts[2].Trim();
                     players.Add(new Player(name, score, date));
                 }
