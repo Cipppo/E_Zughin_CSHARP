@@ -3,6 +3,5 @@ bin/
 obj/
 .idea/
 
-*.sln
-*.csproj
+*.user
 .DS_Store
