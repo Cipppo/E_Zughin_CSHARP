@@ -86,7 +86,7 @@ public class BallTests
     }
 
     [Test]
-    public void TestStop()
+    public void TestStopAndResume()
     {
         Reset();
         var agent = new BallAgent(ball);
@@ -96,29 +96,11 @@ public class BallTests
         var pos = CopyOfPosition(agent.GetBallPosition());
         Thread.Sleep(50);
         Assert.IsTrue(agent.GetBallPosition().Equals(pos), "Ball should not be moving after stop is called");
+        agent.Resume();
+        Thread.Sleep(30);
+        Assert.IsFalse(agent.GetBallPosition().Equals(pos));
         
         agent.Terminate();
-    }
-
-    [Test]
-    public void TestMultipleBallPause()
-    {
-        var runner = new BallRunner(3, new BallBoundChecker(200, 200));
-        runner.Start();
-        Thread.Sleep(50);
-        runner.PauseAll();
-
-        var listBalls = runner.GetBalls().Select(b => b.GetBallPosition()).ToList();
-
-        Thread.Sleep(50);
-
-        for (var i = 0; i < 3; i++)
-        {
-            Assert.IsTrue(Equals(listBalls[i], runner.GetBalls()[i].GetBallPosition()), "Positions should not be changed");
-        }
-        
-        runner.TerminateAll();
-        
     }
 
     private SpherePos2D CopyOfPosition(SpherePos2D pos)
