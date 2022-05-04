@@ -1,7 +1,12 @@
 ﻿<Properties StartupConfiguration="{A1179D09-2670-447C-8E88-2F9A313BBB21}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/BonusGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Progetto/Shape.cs">
     <Files>
-      <File FileName="Progetto/BonusGenerator.cs" Line="34" Column="1" />
+      <File FileName="Progetto/BonusGenerator.cs" Line="41" Column="80" />
+      <File FileName="Progetto/Program.cs" Line="27" Column="77" />
+      <File FileName="Progetto/BonusEntity.cs" Line="13" Column="48" />
+      <File FileName="Progetto/Pickable.cs" Line="3" Column="2" />
+      <File FileName="Progetto/Shape.cs" Line="8" Column="20" />
+      <File FileName="Progetto/Rectagnle.cs" Line="23" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +17,7 @@
                 <Node name="Debug" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True" />
-              <Node name="BonusGenerator.cs" selected="True" />
+              <Node name="Shape.cs" selected="True" />
             </Node>
           </Node>
         </State>
