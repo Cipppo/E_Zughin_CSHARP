@@ -59,6 +59,8 @@ public class BallTests
         Reset();
     }
     
+    //This test may fail due to System.InvalidOperationException when running all test cases.
+    //In that case, rerun the tests or run this one alone.
     [Test]
     public void TestStopAndResume()
     {
