@@ -124,7 +124,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Check if the pause status works as it should.
+        /// Check if the Pause status works as it should.
         /// </summary>
         [Test]
         public void Check_Pause_Status()
