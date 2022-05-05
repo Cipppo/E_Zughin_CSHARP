@@ -26,8 +26,7 @@ namespace Montesi.Utilities
 
         private readonly BirdActor _bird;
         private readonly BirdMover _mover;
-        private bool _moveUp;
-        private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
+        private bool _moveUp; 
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
         private bool _birdDead;
@@ -105,16 +104,16 @@ namespace Montesi.Utilities
             switch (dir)
             {
                 case BirdDirections.Right:
-                    _actionFactory.GetRightAction(_mover);
+                    BirdActionFactory.GetRightAction(_mover);
                     break;
                 case BirdDirections.Left:
-                    _actionFactory.GetLeftAction(_mover);
+                    BirdActionFactory.GetLeftAction(_mover);
                     break;
                 case BirdDirections.Down:
-                    _actionFactory.GetDownAction(_mover);
+                    BirdActionFactory.GetDownAction(_mover);
                     break;
                 case BirdDirections.Up:
-                    _actionFactory.GetUpAction(_mover);
+                    BirdActionFactory.GetUpAction(_mover);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);

@@ -20,7 +20,6 @@ namespace Tests
         private int _startPosX;
         private readonly BirdBoundChecker _bc =
             new BirdBoundChecker(new BirdPair<int, int>(0, SizeX), new BirdPair<int, int>(0, SizeY));
-        private readonly BirdActionFactory _actionFactory = new BirdActionFactory();
         private BirdHandler _birdHandler;
 
         /// <summary>
@@ -40,7 +39,7 @@ namespace Tests
         [Test]
         public void Moving_Bird_Right()
         {
-            _actionFactory.GetRightAction(_mover);
+            BirdActionFactory.GetRightAction(_mover);
             
             Assert.AreEqual(1, Actor.Get().S.Pos.X);
         }
@@ -51,7 +50,7 @@ namespace Tests
         [Test]
         public void Moving_Bird_Down()
         {
-            _actionFactory.GetDownAction(_mover);
+            BirdActionFactory.GetDownAction(_mover);
             
             Assert.AreEqual(1, Actor.Get().S.Pos.Y);
         }

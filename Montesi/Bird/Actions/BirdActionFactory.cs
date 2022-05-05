@@ -5,7 +5,7 @@ namespace Montesi.Actions
     /// <summary>
     /// A factory which models the main character Actions.
     /// </summary>
-    public class BirdActionFactory
+    public static class BirdActionFactory
     {
         private const int Speed = 1;
 
@@ -45,10 +45,10 @@ namespace Montesi.Actions
                 m.Move(new EntityPos2D(m.GetCurrentPos().X, m.GetCurrentPos().Y - Speed));
         }
 
-        public RightAction GetRightAction(BirdMover m) => new RightAction(m);
-        public LeftAction GetLeftAction(BirdMover m) => new LeftAction(m);
-        public DownAction GetDownAction(BirdMover m) => new DownAction(m);
-        public UpAction GetUpAction(BirdMover m) => new UpAction(m);
+        public static RightAction GetRightAction(BirdMover m) => new RightAction(m);
+        public static LeftAction GetLeftAction(BirdMover m) => new LeftAction(m);
+        public static DownAction GetDownAction(BirdMover m) => new DownAction(m);
+        public static UpAction GetUpAction(BirdMover m) => new UpAction(m);
 
     }
 }
