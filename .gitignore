@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 bin/
 obj/
@@ -6,12 +6,4 @@ obj/
 
 .DS_Store
 
-=======
-*.csproj
-obj/
-bin/
-.idea/
-*.sln
-.DS_Store
-*.user
->>>>>>> 8a43c95 (Add)
+
