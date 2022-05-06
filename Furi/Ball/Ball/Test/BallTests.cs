@@ -2,7 +2,6 @@ using Ball.Agent;
 using Ball.Controller;
 using Ball.Physics;
 using Ball.Utils;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
 using NUnit.Framework;
 
 namespace Ball.Test;
