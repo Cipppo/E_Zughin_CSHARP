@@ -1,0 +1,26 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3babe1db_002Da9a3_002D4bf0_002D89db_002D16227a00b7cd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BallTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::ABF7808B-DED3-4078-8BCC-E3A04F43703D::net6.0::Ball.Test.BallTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=444a4e41_002D7abb_002D49ee_002Da98c_002D77432eba089b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BasicMovementTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::ABF7808B-DED3-4078-8BCC-E3A04F43703D::net6.0::Ball.Test.BallTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5e239a7c_002D7fc5_002D46d3_002Dbb32_002Dd3366f93fd31/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BallTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::ABF7808B-DED3-4078-8BCC-E3A04F43703D::net6.0::Ball.Test.BallTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b37d68aa_002Dfcd4_002D4b33_002Dafca_002D779465a75d54/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestDuplicationGranchild #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::ABF7808B-DED3-4078-8BCC-E3A04F43703D::net6.0::Ball.Test.BallTests.TestDuplicationGranchild&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=be363146_002D3780_002D41ac_002Dafcb_002Df868c69db141/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestDuplicationGranchild" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::ABF7808B-DED3-4078-8BCC-E3A04F43703D::net6.0::Ball.Test.BallTests.TestDuplicationGranchild&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
