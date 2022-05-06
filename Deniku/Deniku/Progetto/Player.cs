@@ -28,7 +28,8 @@ namespace Progetto
 
         public override string ToString()
         {
-            string line = string.Format("{0} {1} {2}", nickname, score.GetScore(), date);
+            int s = score.GetScore();
+            string line = string.Format("{0} {1} {2}", nickname, s, date);
             return line;
         }
     }
